@@ -528,50 +528,128 @@ ul {
   margin: 0 0 1.75rem;
 }
 
-.waitlist-form {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+/* Mailchimp embed — custom dark-theme styling (no Mailchimp CSS) */
+#mc_embed_shell,
+#mc_embed_signup,
+.waitlist-mailchimp {
+  width: 100%;
+  margin: 0;
 }
 
-.waitlist-form input[type="email"] {
+#mc_embed_signup_scroll {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  align-items: stretch;
+  text-align: left;
+}
+
+.waitlist-mailchimp .mc-field-group {
+  margin: 0;
+  min-width: 0;
+}
+
+.waitlist-mailchimp .mc-field-group label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.waitlist-mailchimp .asterisk {
+  color: var(--pink);
+}
+
+.waitlist-mailchimp input[type="email"] {
   width: 100%;
   padding: 1rem 1.25rem;
   font-family: var(--font);
   font-size: 1rem;
   color: var(--text);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius-sm);
   outline: none;
   transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-.waitlist-form input[type="email"]::placeholder {
+.waitlist-mailchimp input[type="email"]::placeholder {
   color: rgba(184, 184, 196, 0.6);
 }
 
-.waitlist-form input[type="email"]:focus {
+.waitlist-mailchimp input[type="email"]:focus {
   border-color: rgba(249, 37, 159, 0.5);
   box-shadow: 0 0 0 3px rgba(249, 37, 159, 0.15);
 }
 
-.waitlist-success {
-  display: none;
-  padding: 1.25rem;
-  border-radius: var(--radius-sm);
-  background: linear-gradient(120deg, rgba(249, 37, 159, 0.12), rgba(164, 34, 246, 0.1));
-  border: 1px solid rgba(249, 37, 159, 0.3);
+.waitlist-mailchimp .mc-submit-row {
+  margin: 0;
+}
+
+.waitlist-mailchimp input[type="submit"].button,
+.waitlist-mailchimp #mc-embedded-subscribe {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0.9rem 1.75rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
   color: var(--text);
-  font-weight: 500;
+  background: var(--gradient);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(249, 37, 159, 0.35);
+  transition: transform var(--transition), box-shadow var(--transition), opacity var(--transition);
+  white-space: nowrap;
 }
 
-.waitlist-success.is-visible {
-  display: block;
+.waitlist-mailchimp input[type="submit"].button:hover,
+.waitlist-mailchimp input[type="submit"].button:focus-visible,
+.waitlist-mailchimp #mc-embedded-subscribe:hover,
+.waitlist-mailchimp #mc-embedded-subscribe:focus-visible {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(164, 34, 246, 0.45);
+  outline: none;
 }
 
-.waitlist-form.is-hidden {
-  display: none;
+#mce-responses {
+  grid-column: 1 / -1;
+  margin: 0;
+}
+
+#mce-responses .response {
+  margin: 0.25rem 0 0;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+}
+
+#mce-error-response {
+  color: #fca5a5;
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+}
+
+#mce-success-response {
+  color: #86efac;
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+@media (max-width: 560px) {
+  #mc_embed_signup_scroll {
+    grid-template-columns: 1fr;
+  }
+
+  .waitlist-mailchimp input[type="submit"].button,
+  .waitlist-mailchimp #mc-embedded-subscribe {
+    width: 100%;
+  }
 }
 
 /* ── Footer ───────────────────────────────────────────────────────────── */
@@ -731,13 +809,125 @@ ul {
   }
 }
 
+/* ── Thank-you page ───────────────────────────────────────────────────── */
+
+.thanks-page {
+  background: var(--bg);
+}
+
+.thanks-main {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: calc(var(--header-h) + 2rem) 0 3rem;
+  overflow: hidden;
+}
+
+.thanks-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.thanks-glow::before,
+.thanks-glow::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  animation: pulse-glow 8s ease-in-out infinite alternate;
+}
+
+.thanks-glow::before {
+  width: min(480px, 85vw);
+  height: min(480px, 85vw);
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: radial-gradient(circle, rgba(249, 37, 159, 0.32) 0%, transparent 70%);
+}
+
+.thanks-glow::after {
+  width: min(360px, 75vw);
+  height: min(360px, 75vw);
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-40%);
+  background: radial-gradient(circle, rgba(164, 34, 246, 0.28) 0%, transparent 70%);
+  animation-delay: -4s;
+}
+
+.thanks-content {
+  position: relative;
+  z-index: 1;
+  max-width: 36rem;
+  margin-inline: auto;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--glow);
+}
+
+.thanks-logo {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 1.5rem;
+  border-radius: 18px;
+  box-shadow: var(--glow);
+}
+
+.thanks-headline {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 6vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.thanks-subhead {
+  margin: 0 0 2rem;
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--text-muted);
+}
+
+.thanks-content .btn-primary {
+  min-width: 12rem;
+}
+
+.thanks-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+@media (max-width: 560px) {
+  .thanks-content {
+    padding: 2rem 1.25rem;
+  }
+
+  .thanks-content .btn-primary {
+    width: 100%;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
 
   .hero-glow::before,
-  .hero-glow::after {
+  .hero-glow::after,
+  .thanks-glow::before,
+  .thanks-glow::after {
     animation: none;
   }
 

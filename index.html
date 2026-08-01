@@ -67,8 +67,7 @@
           <p class="subhead">
             The app that turns every concert you've been to into a map, a stat line, and a shareable ticket stub.
           </p>
-          <a href="#waitlist" class="btn btn-primary">Join the Waitlist</a>
-        </div>
+          <a href="https://apps.apple.com/app/reme-live-music-tracker/id6784064425" target="_blank" rel="noopener" class="btn btn-primary">Download on the App Store</a>        </div>
 
         <div class="phone-mockup reveal">
           <div class="phone-screen">
@@ -161,28 +160,28 @@
           <h2 id="waitlist-heading">Be first in line.</h2>
           <p>REME is coming to iOS. Drop your email and we'll let you know when it's ready.</p>
 
-          <!--
-            TODO: paste Mailchimp embed form action/fields here later.
-            Replace the placeholder form below with Mailchimp's generated <form action="...">
-            and hidden fields. Keep the same CSS classes or map Mailchimp inputs to
-            .waitlist-form styles in styles.css.
-          -->
-          <form class="waitlist-form" id="waitlist-form" novalidate>
-            <label for="email" class="visually-hidden">Email address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="you@example.com"
-              autocomplete="email"
-              required
-            />
-            <button type="submit" class="btn btn-primary btn-block">Notify Me</button>
-          </form>
-
-          <p class="waitlist-success" id="waitlist-success" role="status" aria-live="polite">
-            Thanks! We'll be in touch.
-          </p>
+          <div id="mc_embed_shell">
+            <div id="mc_embed_signup">
+              <form action="https://gmail.us14.list-manage.com/subscribe/post?u=482f43c67db22e2109e47796e&amp;id=c98ef80c40&amp;f_id=009987e1f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate waitlist-mailchimp" target="_blank" novalidate>
+                <div id="mc_embed_signup_scroll">
+                  <div class="mc-field-group">
+                    <label for="mce-EMAIL" class="visually-hidden">Email Address <span class="asterisk">*</span></label>
+                    <input type="email" name="EMAIL" class="required email" id="mce-EMAIL" placeholder="you@example.com" autocomplete="email" required>
+                  </div>
+                  <div class="mc-submit-row clear">
+                    <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Notify Me">
+                  </div>
+                  <div id="mce-responses" class="clear foot">
+                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                  </div>
+                  <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                    <input type="text" name="b_482f43c67db22e2109e47796e_c98ef80c40" tabindex="-1" value="">
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -210,8 +209,7 @@
 
       <nav class="footer-legal" aria-label="Legal">
         <a href="privacy-policy.html">Privacy Policy</a>
-        <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" target="_blank" rel="noopener">Terms of Service</a>
-      </nav>
+        <a href="https://terms.reme.live" target="_blank" rel="noopener">Terms of Service</a>      </nav>
 
       <p class="footer-copy">&copy; 2026 REME. All rights reserved.</p>
     </div>
@@ -253,20 +251,6 @@
           navLinks.classList.remove("is-open");
           navToggle.setAttribute("aria-expanded", "false");
         });
-      });
-
-      var form = document.getElementById("waitlist-form");
-      var success = document.getElementById("waitlist-success");
-
-      form.addEventListener("submit", function (e) {
-        e.preventDefault();
-        var input = form.querySelector('input[type="email"]');
-        if (!input.value || !input.checkValidity()) {
-          input.focus();
-          return;
-        }
-        form.classList.add("is-hidden");
-        success.classList.add("is-visible");
       });
 
       if ("IntersectionObserver" in window) {
